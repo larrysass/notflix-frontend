@@ -1,26 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MainPage from './MainPage.js';
+import HomePage from './HomePage.js';
+import LoginPage from './LoginPage.js';
+import SignUpPage from './SignUpPage.js';
+import PageNotFound from './PageNotFound.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import { Switch, Route, withRouter } from 'react-router-dom'
+
+
+class App extends React.Component {
+
+  state = { 
+    currentUser: {},
+    username: '',
+  }
+
+  componentDidMount() {
+    if (localStorage.token) {
+      fetch('http://localhost:3000/profile',{
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`
+        }
+      })
+      .then(res => res.json())
+      .then(user => this.setState({currentUser: user, username: user.username}))
+    } else {
+      this.props.history.push('/')
+    }
+  }
+
+  render() {
+     return (
+   <Switch> 
+     <Route path={'/main'}
+     render={routerProps => <MainPage {...routerProps} currentUser={this.state.currentUser}/>}
+     />
+
+     <Route path={'/login'} component={LoginPage} />
+      <Route path={'/signup'} component={SignUpPage} />
+     <Route path={'/'} component={HomePage}/>
+     <Route component={PageNotFound}/>
+   </Switch>
   );
 }
+}
 
-export default App;
+export default withRouter(App)

@@ -7,6 +7,91 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  height: 100%;
+  width: 100%;
+}
+.homePageMainContainer {
+  background-image: url(assets/netflixBackground.jpg);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+.homePageNotflix{
+  position: relative;
+  left: 2%;
+  height: 10em;
+}
+.homePageSubContainer{
+  position: absolute;
+  top: 30%;
+  bottom: 30%;
+  left: 38%;
+  background-color: black;
+  opacity: .95;
+  width: 28em;
+  height: 10em;
+}
+.homePageText {
+  font-weight: bold;
+  margin: 10px;
+}
+.signupButton {
+  position: absolute;
+  left: 40%;
+  background-color: red;
+  color: white;
+  width: 10em;
+  font-weight: bold;
+}
+.signupButton:hover {
+
+  background-color: white;
+  color: red;
+
+}
+.loginButton {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  width: 10em;
+  background-color: red;
+  font-weight: bold;
+  color: white;
+}
+.loginButton:hover {
+
+  background-color: white;
+  color: red;
+
+}
+.signupInput {
+  margin: 10px;
+  opacity: .8;
+  background-color: transparent;
+  border-style: solid;
+  border-radius: 25px;
+  border-color: white;
+
+  color: white;
+  outline:none;
+}
+.newSignupButton {
+  position: absolute;
+  top: 60%;
+  left: 40%;
+  background-color: red;
+  color: white;
+  width: 10em;
+  font-weight: bold;
+
+}
+.newSignupButton:hover {
+
+  background-color: white;
+  color: red;
+
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
