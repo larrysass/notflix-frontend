@@ -42,6 +42,7 @@ class FavoriteCard extends React.Component {
         <div className="overlay"> 
         <p className="overlay movieCardTitle">{this.props.data.name}</p>
         <button onClick={this.handleDelete}  id="favoriteButton">Remove</button>
+        <button onClick={this.handleClick}  id="detailsButton"> Details</button>
         {/* <button onClick={this.handleClick}  id="detailsButton">╲╱</button> */}
         </div>
 

@@ -84,8 +84,10 @@ class MainPage extends React.Component {
     handleFeatureFave = () => {
       const array = this.state.favorites.filter(fave => fave.db_id == 398175);
       if(array.length > 0 ) {
+        alert("That Title is Already in Your List!")
         return
       }
+      alert("Brawl in Cell Block 99 Added To Your List!")
       fetch('http://localhost:3000/favorites', {
           method: 'POST',
           headers: {
@@ -113,6 +115,7 @@ class MainPage extends React.Component {
     handleFave = (data) => {
       const array = this.state.favorites.filter(fave => fave.db_id == data.id);
       if(array.length > 0 ) {
+        alert("This title is already in your list!")
         return
       }
 
@@ -124,7 +127,7 @@ class MainPage extends React.Component {
       }
 
     
-    
+      alert(`${name } added to your list!`)
       fetch('http://localhost:3000/favorites', {
           method: 'POST',
           headers: {
@@ -166,7 +169,7 @@ class MainPage extends React.Component {
       <img id="featuredImg" src={blur_edges}/>
       <img  id="brawlText" src={brawlText}/>
       <button onClick={this.handleFeatureFave}id="featuredLike">+ My list</button>
-      <button id="featuredDetails">Details</button>
+      {/* <button id="featuredDetails">Details</button> */}
 
       </div>
       <NetflixRow handleFave={this.handleFave} />
@@ -183,6 +186,7 @@ class MainPage extends React.Component {
       <Row  handleFave={this.handleFave} name={"Thrillers"}url={"https://api.themoviedb.org/3/discover/movie?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&with_genres=53"}/>
     
       {this.state.favorites.length > 0?  <div><FavoriteRow 
+      handleFave={this.handleFave}
       handleDelete={this.handleDelete}
       favorites={this.state.favorites} />
     

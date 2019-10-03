@@ -57,7 +57,7 @@ body {
   outline:none;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
-  width: .1em;
+  width: 0.03em;
 
 }
 
@@ -156,6 +156,11 @@ body {
   font-weight: bold;
  
   outline:none;
+}
+
+.favoriteRow {
+  margin: 20px;
+
 }
 
 #favoriteButton:hover {
@@ -267,7 +272,7 @@ height: 25em;
   height: 3em;
   width: 7em;
   top: 50%;
-  right: 65%;
+  right: 90.5%;
   background: none;
   color: white;
   font-weight: bold;

@@ -40,7 +40,10 @@ class SearchRow extends React.Component {
 
 }
 closeDetails = () => {
-    this.setState({details:false})
+    this.setState({
+        details:false,
+        showMore: false
+    })
 }
 
     render() {

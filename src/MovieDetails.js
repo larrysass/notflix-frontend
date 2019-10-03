@@ -10,7 +10,16 @@ class MovieDetails extends React.Component {
 
     componentDidMount() {
 
-         fetch(`https://api.themoviedb.org/3/${this.props.mediaType}/${this.props.data.id}/videos?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136`)
+        if(this.props.favorite === "hello"){
+            var the_id = this.props.data.db_id
+        }
+        else {
+            var the_id = this.props.data.id
+        }
+        
+        console.log(the_id)
+
+         fetch(`https://api.themoviedb.org/3/${this.props.mediaType}/${the_id}/videos?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136`)
         .then(res => res.json()).then(videoData => {
             console.log(videoData)
             if(!videoData.results || videoData.results.length < 1) {
@@ -54,7 +63,7 @@ render() {
     return(
     <div className="movieDetails">
             <div id="movieInfo">
-                <button id="exitMovieDetails" onClick={this.handleFave}> + My List</button>
+            {this.props.favorite === "hello"? null:<button id="exitMovieDetails" onClick={this.handleFave}> + My List</button>}
                 <button id="exitMovieDetails" onClick={this.handleClick}> X Close</button>
                 <h1>{this.props.data.title}</h1> <h1>{this.props.data.name}</h1>
                 <p>{this.props.data.overview}</p>
