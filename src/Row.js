@@ -64,28 +64,22 @@ this.setState({
 
     return(
         <div className="rowContainer"> 
-        <h1 className="movieTitle"> {this.props.name}</h1>
-        <div className="movieRow">
-        {movies}
-        {/* <button onClick={this.moreMovies}>More Movies</button>
-        <button onClick={this.lessMovies}>Less Movies</button> */}
-
-        </div>
-        {this.state.details? <MovieDetails 
-        showMore={this.showMore}
-        handleFave={this.props.handleFave}
-        mediaType="movie"
-        closeDetails={this.closeDetails}
-        data={this.state.movieToBeDetailed}/>:null}
-        {this.state.showMore? 
-        <Row 
-        handleFave={this.props.handleFave} name={`Similar to "${this.state.showMoreData.title}"`} url={`https://api.themoviedb.org/3/movie/${this.state.showMoreData.id}/recommendations?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&language=en-US&page=1`}
-        />:null}
+            <h1 className="movieTitle"> {this.props.name}</h1>
+            <div className="movieRow">
+                {movies}
+            </div>
+            {this.state.details? <MovieDetails 
+            showMore={this.showMore}
+            handleFave={this.props.handleFave}
+            mediaType="movie"
+            closeDetails={this.closeDetails}
+            data={this.state.movieToBeDetailed}/>:null}
+            {this.state.showMore? 
+            <Row 
+            handleFave={this.props.handleFave} name={`Similar to "${this.state.showMoreData.title}"`} url={`https://api.themoviedb.org/3/movie/${this.state.showMoreData.id}/recommendations?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&language=en-US&page=1`}
+            />:null}
         </div>
     )
-
-
-    }
-}
+    }}
 
 export default Row 

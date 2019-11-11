@@ -25,9 +25,7 @@ class LoginPage extends Component {
     .then(data => {
       if (data.token) {
         localStorage.token = data.token
-
         this.props.history.push('/main')
-
       }
     })
   }
@@ -38,17 +36,17 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="homePageMainContainer">
-         <img className="homePageNotflix" src={netflix_logo} onClick={this.handleClick} />
-      <div className="homePageSubContainer">
-        <p className="homePageText"> Log in!</p>
-        <form onSubmit={this.handleSubmit} className="field">
-          <input className="signupInput" onChange={this.handleChange} value={this.state.username} placeholder="username" type="text"  name="username" />
-          <input className="signupInput" onChange={this.handleChange} value={this.state.password} placeholder="password"type="password" name="password" />
-          <input className="newSignupButton" type="submit"  value="Log in"/>
-        </form>
+        <div className="homePageMainContainer">
+        <img className="homePageNotflix" src={netflix_logo} onClick={this.handleClick} />
+          <div className="homePageSubContainer">
+            <p className="homePageText"> Log in!</p>
+            <form onSubmit={this.handleSubmit} className="field">
+            <input className="signupInput" onChange={this.handleChange} value={this.state.username} placeholder="username" type="text"  name="username" />
+            <input className="signupInput" onChange={this.handleChange} value={this.state.password} placeholder="password"type="password" name="password" />
+            <input className="newSignupButton" type="submit"  value="Log in"/>
+            </form>
+          </div>
         </div>
-      </div>
     );
   }
 }
