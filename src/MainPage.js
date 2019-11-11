@@ -31,11 +31,7 @@ class MainPage extends React.Component {
             favorites: data.favorites
         })} 
         )
-        // .then(fetch(`http://localhost:3000/users/1`)
-        // .then(res => res.json().then( faves=> this.setState({
-        //   favorites: faves
-        // })))
-        // )
+  
     }
 
     logOut = () => {
@@ -43,9 +39,6 @@ class MainPage extends React.Component {
       this.props.history.push('/')
   }
 
-  bottomScrolled = () => {
-    console.log("the bottom")
-  }
 
   handleSearch = (event) => {
    if(event.target.value.length < 1 ) {
@@ -153,28 +146,25 @@ class MainPage extends React.Component {
 
   render() {
      return (
-      <BottomScrollListener onBottom={this.bottomScrolled}>
-        {scrollRef => (
+
     <div ref={scrollRef} className="App">
       <div className="navBar">
       <img onClick={this.refresh} src={netflix_logo} height="72" width="142"/> 
-      {/* <h1>Welcome,  {this.state.currentUser.username}!  </h1>  */}
       <button className="logoutButton" onClick={this.logOut}>Log out</button> 
       <input className="searchBar" placeholder="search movies" onChange={this.handleSearch}/>
       </div>
       
-      {this.state.searching? <SearchRow handleFave={this.handleFave} favorites={this.state.searchedItems}/>:
+      {this.state.searching? 
+      <SearchRow handleFave={this.handleFave} favorites={this.state.searchedItems}/>:
       <div className="MainContainer">
       <div id="featuredMovie"> 
       <img id="featuredImg" src={blur_edges}/>
       <img  id="brawlText" src={brawlText}/>
       <button onClick={this.handleFeatureFave}id="featuredLike">+ My list</button>
-      {/* <button id="featuredDetails">Details</button> */}
 
       </div>
       <NetflixRow handleFave={this.handleFave} />
       <Row  handleFave={this.handleFave} name={"Action Movies"}url={"https://api.themoviedb.org/3/discover/movie?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&with_genres=28"}/>
-
       <Row  handleFave={this.handleFave} name={"Animated Movies"}url={"https://api.themoviedb.org/3/discover/movie?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&with_genres=16"}/>
       <Row  handleFave={this.handleFave} name={"Comedies"}url={"https://api.themoviedb.org/3/discover/movie?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&with_genres=35"}/>
       <Row  handleFave={this.handleFave} name={"Documentaries"}url={"https://api.themoviedb.org/3/discover/movie?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&with_genres=99"}/>
@@ -182,23 +172,20 @@ class MainPage extends React.Component {
       <Row  handleFave={this.handleFave} name={"Horror"}url={"https://api.themoviedb.org/3/discover/movie?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&with_genres=27"}/>
       <Row  handleFave={this.handleFave} name={"Western"}url={"https://api.themoviedb.org/3/discover/movie?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&with_genres=37"}/>
       <Row  handleFave={this.handleFave} name={"Fantasy"}url={"https://api.themoviedb.org/3/discover/movie?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&with_genres=14"}/>
-      
       <Row  handleFave={this.handleFave} name={"Thrillers"}url={"https://api.themoviedb.org/3/discover/movie?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&with_genres=53"}/>
     
-      {this.state.favorites.length > 0?  <div><FavoriteRow 
+      {this.state.favorites.length > 0?  
+      <div>
+      <FavoriteRow 
       handleFave={this.handleFave}
       handleDelete={this.handleDelete}
       favorites={this.state.favorites} />
-    
       </div>
       :null}
       </div>
       }
     </div>
-        )}
-    </BottomScrollListener>
   );
-}
-}
+}}
 
 export default MainPage

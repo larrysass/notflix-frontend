@@ -47,10 +47,6 @@ class FavoriteRow extends React.Component {
  
 
     render() {
-        
-
- 
-
         const movies = this.props.favorites.map(movie => {
             return <FavoriteCard 
             handleDelete={this.props.handleDelete}
@@ -64,9 +60,6 @@ class FavoriteRow extends React.Component {
             <h1 className="movieTitle">My list</h1>
             <div className="movieRow">
             {movies}
-            {/* <button onClick={this.moreMovies}>More Movies</button>
-            <button onClick={this.lessMovies}>Less Movies</button> */}
-    
             </div>
             {this.state.details? <MovieDetails 
             showMore={this.showMore}
@@ -74,18 +67,14 @@ class FavoriteRow extends React.Component {
             mediaType="movie"
             handleFave={this.props.handleFave}
             closeDetails={this.closeDetails}
-            data={this.state.movieToBeDetailed}/>:null}
+            data={this.state.movieToBeDetailed}/>
+            :null}
             {this.state.showMore? 
-        <Row 
-        handleFave={this.props.handleFave} name={`Similar to "${this.state.showMoreData.name}"`} url={`https://api.themoviedb.org/3/movie/${this.state.showMoreData.db_id}/recommendations?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&language=en-US&page=1`}
-        />:null}
+            <Row 
+            handleFave={this.props.handleFave} name={`Similar to "${this.state.showMoreData.name}"`} url={`https://api.themoviedb.org/3/movie/${this.state.showMoreData.db_id}/recommendations?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136&language=en-US&page=1`}
+            />
+            :null}
             </div>
-
-        )
-    }
-
-
-
+        )}
 }
-
 export default FavoriteRow

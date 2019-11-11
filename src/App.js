@@ -31,17 +31,16 @@ class App extends React.Component {
   }
 
   render() {
-     return (
-   <Switch> 
-     <Route path={'/main'}
-     render={routerProps => <MainPage {...routerProps} currentUser={this.state.currentUser}/>}
-     />
-
-     <Route path={'/login'} component={LoginPage} />
+    return (
+      <Switch> 
+      <Route path={'/main'}
+      render={routerProps => <MainPage {...routerProps} currentUser={this.state.currentUser}/>}
+      />
+      <Route path={'/login'} component={LoginPage} />
       <Route path={'/signup'} component={SignUpPage} />
-     <Route path={'/'} component={HomePage}/>
-     <Route component={PageNotFound}/>
-   </Switch>
+      <Route path={'/'} component={HomePage}/>
+      <Route component={PageNotFound}/>
+    </Switch>
   );
 }
 }

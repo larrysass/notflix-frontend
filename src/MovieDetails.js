@@ -7,7 +7,6 @@ class MovieDetails extends React.Component {
         url: ``
     }
 
-
     componentDidMount() {
 
         if(this.props.favorite === "hello"){
@@ -16,8 +15,6 @@ class MovieDetails extends React.Component {
         else {
             var the_id = this.props.data.id
         }
-        
-        console.log(the_id)
 
          fetch(`https://api.themoviedb.org/3/${this.props.mediaType}/${the_id}/videos?api_key=1bcc3b19b2c530d9e8273d3f3ddd2136`)
         .then(res => res.json()).then(videoData => {
@@ -52,7 +49,7 @@ render() {
     const opts = {
         height: '390',
         width: '640',
-        playerVars: { // https://developers.google.com/youtube/player_parameters
+        playerVars: { 
           autoplay: 1, 
           controls: 0,
           allowfullscreen: 0
@@ -71,15 +68,13 @@ render() {
                 <button onClick={this.showMore} className="showMeMore">Show me movies like this</button> 
                 :null}
             </div>
-        <div id="trailerDiv">
-            <YouTube
-    
-            videoId={this.state.url}
-            opts={opts}
-            onReady={this._onReady}
-            />
-         </div>
-
+            <div id="trailerDiv">
+                <YouTube
+                videoId={this.state.url}
+                opts={opts}
+                onReady={this._onReady}
+                />
+            </div>
     </div>
     ) 
 }

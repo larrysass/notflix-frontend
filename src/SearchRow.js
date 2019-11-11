@@ -70,9 +70,6 @@ closeDetails = () => {
             <h1> Search Results: </h1>
             <div className="movieRow">
             {movies}
-            {/* <button onClick={this.moreMovies}>More Movies</button>
-            <button onClick={this.lessMovies}>Less Movies</button> */}
-    
             </div>
             {this.state.details? <MovieDetails 
             showMore={this.showMore}
